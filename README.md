@@ -1,2 +1,1684 @@
 # psyy10245.github.io
 website
+[learnhub-complete.html](https://github.com/user-attachments/files/25142507/learnhub-complete.html)
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프리미엄 학습 플랫폼</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent-light: #ff6b85;
+            --gold: #d4af37;
+            --bg: #0f0f1e;
+            --text: #e8e8e8;
+            --text-dim: #a0a0a0;
+            --card-bg: #1e1e3f;
+            --border: rgba(255, 255, 255, 0.1);
+            --success: #00b894;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 5%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-light);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(233, 69, 96, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-admin {
+            background: var(--gold);
+            color: var(--primary);
+        }
+
+        .btn-admin:hover {
+            background: #f0c14b;
+        }
+
+        .btn-google {
+            background: white;
+            color: #333;
+            padding: 0.8rem 1.8rem;
+            font-weight: 500;
+        }
+
+        .btn-google:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 6rem 5% 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(233, 69, 96, 0.15), transparent 70%);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--text), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        /* Courses Section */
+        .courses {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.4s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(233, 69, 96, 0.2);
+        }
+
+        .course-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .premium-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gold);
+            color: var(--primary);
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .course-content {
+            padding: 1.8rem;
+        }
+
+        .course-content h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .course-content p {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .course-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .price-original {
+            text-decoration: line-through;
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            margin-left: 0.5rem;
+        }
+
+        /* Advertisement Section */
+        .ad-section {
+            padding: 3rem 5%;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ad-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 3rem;
+            border: 2px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ad-container::before {
+            content: '광고';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--accent);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .ad-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .ad-text h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-light);
+        }
+
+        .ad-text p {
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .ad-visual {
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            height: 250px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease-out;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid var(--border);
+            animation: slideUp 0.4s ease-out;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-content.large {
+            max-width: 900px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--accent);
+        }
+
+        .modal h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Payment Modal */
+        .payment-details {
+            background: var(--secondary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .payment-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .payment-row:last-child {
+            border-bottom: none;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .payment-method {
+            background: var(--secondary);
+            padding: 1.2rem;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .payment-method:hover {
+            border-color: var(--accent);
+            background: var(--primary);
+        }
+
+        .payment-method.selected {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: white;
+        }
+
+        .bank-transfer-info {
+            display: none;
+            background: var(--secondary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+        }
+
+        .bank-transfer-info.show {
+            display: block;
+        }
+
+        .bank-info {
+            background: var(--primary);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .bank-info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .bank-info-row strong {
+            color: var(--accent-light);
+        }
+
+        .copy-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin-left: 0.5rem;
+        }
+
+        .copy-btn:hover {
+            background: var(--accent-light);
+        }
+
+        /* Login Modal */
+        .login-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .social-login {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: white;
+            color: #333;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .social-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .social-login svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 1.5rem 0;
+            color: var(--text-dim);
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dim);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.9rem;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* User Profile */
+        .user-profile {
+            display: none;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-profile.active {
+            display: flex;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .user-name {
+            font-weight: 500;
+        }
+
+        /* Admin Dashboard */
+        .admin-dashboard {
+            display: none;
+            padding: 5rem 5% 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .admin-dashboard.active {
+            display: block;
+        }
+
+        .admin-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .admin-tab {
+            padding: 1rem 2rem;
+            background: transparent;
+            border: none;
+            color: var(--text-dim);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .admin-tab:hover {
+            color: var(--text);
+        }
+
+        .admin-tab.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .admin-panel {
+            display: none;
+        }
+
+        .admin-panel.active {
+            display: block;
+        }
+
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-card h4 {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .data-table {
+            width: 100%;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table th {
+            background: var(--secondary);
+            font-weight: 600;
+            color: var(--accent-light);
+        }
+
+        .data-table tr:hover {
+            background: var(--secondary);
+        }
+
+        .action-btn {
+            padding: 0.4rem 0.8rem;
+            margin-right: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: linear-gradient(135deg, #00b894, #00cec9);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideUp 0.4s ease-out;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .alert-info {
+            background: rgba(52, 152, 219, 0.2);
+            border: 1px solid rgba(52, 152, 219, 0.5);
+            color: #3498db;
+        }
+
+        .alert-warning {
+            background: rgba(243, 156, 18, 0.2);
+            border: 1px solid rgba(243, 156, 18, 0.5);
+            color: #f39c12;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .ad-content {
+                grid-template-columns: 1fr;
+            }
+
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-tabs {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">LearnHub</div>
+            <div class="nav-links">
+                <a href="#" onclick="showMainSite(); return false;">홈</a>
+                <a href="#courses">강좌</a>
+                <a href="#pricing">가격</a>
+            </div>
+            <div class="auth-buttons">
+                <button class="btn btn-outline" onclick="openLoginModal()">로그인</button>
+                <button class="btn btn-primary" onclick="openLoginModal()">시작하기</button>
+                <div class="user-profile" id="userProfile">
+                    <div class="user-avatar" id="userAvatar"></div>
+                    <span class="user-name" id="userName"></span>
+                    <button class="btn btn-admin" id="adminBtn" onclick="showAdminDashboard()" style="display: none;">관리자</button>
+                    <button class="btn btn-outline" onclick="logout()">로그아웃</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Site -->
+    <div id="mainSite">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>세상을 바꾸는<br>지식의 힘</h1>
+            <p>전문가들이 만든 프리미엄 강좌로 당신의 미래를 설계하세요</p>
+            <div class="cta-group">
+                <button class="btn btn-primary btn-google" onclick="loginWithGoogle()">
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    Google로 시작하기
+                </button>
+                <button class="btn btn-outline" onclick="document.querySelector('#courses').scrollIntoView({behavior: 'smooth'})">강좌 둘러보기</button>
+            </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section class="courses" id="courses">
+            <div class="section-header">
+                <h2>인기 강좌</h2>
+                <p style="color: var(--text-dim);">업계 최고의 전문가들이 만든 강좌를 만나보세요</p>
+            </div>
+            <div class="course-grid" id="courseGrid">
+                <!-- 강좌는 JavaScript로 동적 생성 -->
+            </div>
+        </section>
+
+        <!-- Advertisement Section -->
+        <section class="ad-section" id="adSection">
+            <!-- 광고는 JavaScript로 동적 생성 -->
+        </section>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div class="admin-dashboard" id="adminDashboard">
+        <h1 style="font-family: 'Crimson Pro', serif; font-size: 3rem; margin-bottom: 2rem;">관리자 대시보드</h1>
+        
+        <div class="admin-tabs">
+            <button class="admin-tab active" onclick="switchAdminTab('stats')">통계</button>
+            <button class="admin-tab" onclick="switchAdminTab('courses')">강좌 관리</button>
+            <button class="admin-tab" onclick="switchAdminTab('ads')">광고 관리</button>
+            <button class="admin-tab" onclick="switchAdminTab('payments')">결제 내역</button>
+            <button class="admin-tab" onclick="switchAdminTab('settings')">설정</button>
+        </div>
+
+        <!-- Stats Panel -->
+        <div class="admin-panel active" id="statsPanel">
+            <div class="admin-stats">
+                <div class="stat-card">
+                    <h4>총 매출</h4>
+                    <div class="stat-value" id="totalRevenue">₩0</div>
+                </div>
+                <div class="stat-card">
+                    <h4>총 결제 건수</h4>
+                    <div class="stat-value" id="totalPayments">0</div>
+                </div>
+                <div class="stat-card">
+                    <h4>등록된 강좌</h4>
+                    <div class="stat-value" id="totalCourses">0</div>
+                </div>
+                <div class="stat-card">
+                    <h4>활성 광고</h4>
+                    <div class="stat-value" id="totalAds">0</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Courses Panel -->
+        <div class="admin-panel" id="coursesPanel">
+            <button class="btn btn-primary" onclick="openCourseModal()">+ 새 강좌 추가</button>
+            <div style="height: 2rem;"></div>
+            <table class="data-table" id="coursesTable">
+                <thead>
+                    <tr>
+                        <th>강좌명</th>
+                        <th>가격</th>
+                        <th>이모지</th>
+                        <th>작업</th>
+                    </tr>
+                </thead>
+                <tbody id="coursesTableBody">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Ads Panel -->
+        <div class="admin-panel" id="adsPanel">
+            <button class="btn btn-primary" onclick="openAdModal()">+ 새 광고 추가</button>
+            <div style="height: 2rem;"></div>
+            <table class="data-table" id="adsTable">
+                <thead>
+                    <tr>
+                        <th>제목</th>
+                        <th>내용</th>
+                        <th>상태</th>
+                        <th>작업</th>
+                    </tr>
+                </thead>
+                <tbody id="adsTableBody">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Payments Panel -->
+        <div class="admin-panel" id="paymentsPanel">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>날짜</th>
+                        <th>강좌명</th>
+                        <th>금액</th>
+                        <th>결제수단</th>
+                        <th>입금자명</th>
+                        <th>상태</th>
+                    </tr>
+                </thead>
+                <tbody id="paymentsTableBody">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Settings Panel -->
+        <div class="admin-panel" id="settingsPanel">
+            <h3 style="margin-bottom: 2rem;">계좌 정보 설정</h3>
+            <div class="form-group">
+                <label>은행명</label>
+                <input type="text" id="bankName" value="국민은행">
+            </div>
+            <div class="form-group">
+                <label>계좌번호</label>
+                <input type="text" id="accountNumber" value="123456-78-901234">
+            </div>
+            <div class="form-group">
+                <label>예금주</label>
+                <input type="text" id="accountHolder" value="LearnHub">
+            </div>
+            <button class="btn btn-primary" onclick="saveSettings()">설정 저장</button>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeLoginModal()">×</button>
+            <h2>시작하기</h2>
+            
+            <div class="login-options">
+                <button class="social-login" onclick="loginWithGoogle()">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    Google로 계속하기
+                </button>
+            </div>
+
+            <div class="divider">또는</div>
+
+            <form onsubmit="handleEmailLogin(event)">
+                <div class="form-group">
+                    <label>이메일</label>
+                    <input type="email" id="loginEmail" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>비밀번호</label>
+                    <input type="password" id="loginPassword" placeholder="비밀번호를 입력하세요" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">로그인</button>
+            </form>
+
+            <div style="margin-top: 1.5rem; text-align: center; color: var(--text-dim); font-size: 0.9rem;">
+                관리자 로그인: admin@learnhub.com / admin123
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closePaymentModal()">×</button>
+            <h2>결제하기</h2>
+            
+            <div id="successMessage" class="success-message">
+                결제 요청이 완료되었습니다! 🎉
+            </div>
+
+            <div class="payment-details">
+                <div class="payment-row">
+                    <span>강좌명</span>
+                    <span id="courseName"></span>
+                </div>
+                <div class="payment-row">
+                    <span>가격</span>
+                    <span id="coursePrice"></span>
+                </div>
+                <div class="payment-row">
+                    <span>총 결제금액</span>
+                    <span id="totalPrice"></span>
+                </div>
+            </div>
+
+            <p style="margin-bottom: 1rem; color: var(--text-dim);">결제 수단 선택</p>
+            <div class="payment-methods">
+                <div class="payment-method" onclick="selectPaymentMethod(this, 'bank')">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏦</div>
+                    <div><strong>무통장 입금</strong></div>
+                    <div style="font-size: 0.85rem; color: var(--text-dim);">가상계좌 발급 후 입금</div>
+                </div>
+            </div>
+
+            <div class="bank-transfer-info" id="bankTransferInfo">
+                <div class="alert alert-info">
+                    아래 계좌로 입금해주시면 확인 후 강좌가 활성화됩니다.
+                </div>
+                
+                <div class="bank-info">
+                    <div class="bank-info-row">
+                        <span>은행</span>
+                        <strong id="displayBankName">국민은행</strong>
+                    </div>
+                    <div class="bank-info-row">
+                        <span>계좌번호</span>
+                        <div>
+                            <strong id="displayAccountNumber">123456-78-901234</strong>
+                            <button class="copy-btn" onclick="copyAccountNumber()">복사</button>
+                        </div>
+                    </div>
+                    <div class="bank-info-row">
+                        <span>예금주</span>
+                        <strong id="displayAccountHolder">LearnHub</strong>
+                    </div>
+                    <div class="bank-info-row">
+                        <span>입금액</span>
+                        <strong id="displayAmount"></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>입금자명 *</label>
+                    <input type="text" id="depositorName" placeholder="홍길동" required>
+                    <small style="color: var(--text-dim); font-size: 0.85rem;">입금 확인을 위해 정확히 입력해주세요</small>
+                </div>
+
+                <div class="alert alert-warning">
+                    ⚠️ 입금자명을 정확히 입력해주세요. 입금 확인은 영업일 기준 1-2일 소요됩니다.
+                </div>
+            </div>
+
+            <button class="btn btn-primary" style="width: 100%; padding: 1.2rem;" onclick="processPayment()">
+                결제 요청하기
+            </button>
+        </div>
+    </div>
+
+    <!-- Course Modal -->
+    <div class="modal" id="courseModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeCourseModal()">×</button>
+            <h2 id="courseModalTitle">새 강좌 추가</h2>
+            
+            <form onsubmit="saveCourse(event)">
+                <div class="form-group">
+                    <label>강좌명</label>
+                    <input type="text" id="courseNameInput" required>
+                </div>
+                <div class="form-group">
+                    <label>설명</label>
+                    <textarea id="courseDescInput" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>가격 (원)</label>
+                    <input type="number" id="coursePriceInput" required>
+                </div>
+                <div class="form-group">
+                    <label>할인 전 가격 (원)</label>
+                    <input type="number" id="courseOriginalPriceInput">
+                </div>
+                <div class="form-group">
+                    <label>이모지</label>
+                    <input type="text" id="courseEmojiInput" placeholder="💻" maxlength="2">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">저장</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Ad Modal -->
+    <div class="modal" id="adModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeAdModal()">×</button>
+            <h2 id="adModalTitle">새 광고 추가</h2>
+            
+            <form onsubmit="saveAd(event)">
+                <div class="form-group">
+                    <label>제목</label>
+                    <input type="text" id="adTitleInput" required>
+                </div>
+                <div class="form-group">
+                    <label>내용</label>
+                    <textarea id="adContentInput" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>버튼 텍스트</label>
+                    <input type="text" id="adButtonInput" value="지금 확인하기">
+                </div>
+                <div class="form-group">
+                    <label>이모지</label>
+                    <input type="text" id="adEmojiInput" placeholder="🎁" maxlength="2">
+                </div>
+                <div class="form-group">
+                    <label>상태</label>
+                    <select id="adStatusInput">
+                        <option value="active">활성</option>
+                        <option value="inactive">비활성</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">저장</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // ============= 데이터 저장소 (LocalStorage 사용) =============
+        const DB = {
+            get: (key) => {
+                const data = localStorage.getItem(key);
+                return data ? JSON.parse(data) : null;
+            },
+            set: (key, value) => {
+                localStorage.setItem(key, JSON.stringify(value));
+            },
+            init: () => {
+                if (!DB.get('courses')) {
+                    DB.set('courses', [
+                        {id: 1, name: '웹 개발 마스터클래스', desc: 'HTML, CSS, JavaScript부터 React까지 완벽하게 배우는 종합 강좌', price: 89000, originalPrice: 150000, emoji: '💻'},
+                        {id: 2, name: '데이터 사이언스 완성', desc: 'Python, 머신러닝, 데이터 분석까지 실무 중심 프로젝트', price: 129000, originalPrice: 200000, emoji: '📊'},
+                        {id: 3, name: 'UI/UX 디자인 실무', desc: 'Figma를 활용한 실무 프로젝트와 포트폴리오 제작', price: 99000, originalPrice: 170000, emoji: '🎨'}
+                    ]);
+                }
+                if (!DB.get('ads')) {
+                    DB.set('ads', [
+                        {id: 1, title: '🎉 특별 할인 이벤트', content: '지금 가입하면 모든 강좌 40% 할인!\n놓치지 마세요, 이번 주말까지만!', button: '지금 가입하고 할인받기', emoji: '🎁', status: 'active'}
+                    ]);
+                }
+                if (!DB.get('payments')) DB.set('payments', []);
+                if (!DB.get('settings')) {
+                    DB.set('settings', {
+                        bankName: '국민은행',
+                        accountNumber: '123456-78-901234',
+                        accountHolder: 'LearnHub'
+                    });
+                }
+            }
+        };
+
+        // ============= 전역 상태 =============
+        let currentUser = null;
+        let selectedPaymentMethod = null;
+        let currentCourse = null;
+        let editingCourseId = null;
+        let editingAdId = null;
+
+        // ============= 초기화 =============
+        document.addEventListener('DOMContentLoaded', () => {
+            DB.init();
+            renderCourses();
+            renderAds();
+            updateAdminStats();
+        });
+
+        // ============= 로그인 관련 =============
+        function loginWithGoogle() {
+            const mockUser = {
+                name: '홍길동',
+                email: 'hong@example.com',
+                isAdmin: false
+            };
+            currentUser = mockUser;
+            updateUIAfterLogin();
+            closeLoginModal();
+            alert('Google 로그인 시뮬레이션\n\n실제 구현시 Google OAuth 2.0 사용:\nhttps://developers.google.com/identity/gsi/web');
+        }
+
+        function handleEmailLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            currentUser = {
+                name: email.split('@')[0],
+                email: email,
+                isAdmin: email === 'admin@learnhub.com' && password === 'admin123'
+            };
+
+            updateUIAfterLogin();
+            closeLoginModal();
+
+            if (currentUser.isAdmin) {
+                alert('관리자로 로그인되었습니다!');
+            }
+        }
+
+        function updateUIAfterLogin() {
+            const authButtons = document.querySelector('.auth-buttons');
+            authButtons.querySelector('.btn-outline').style.display = 'none';
+            authButtons.querySelector('.btn-primary').style.display = 'none';
+            
+            const userProfile = document.getElementById('userProfile');
+            userProfile.classList.add('active');
+            
+            document.getElementById('userName').textContent = currentUser.name;
+            document.getElementById('userAvatar').textContent = currentUser.name.charAt(0).toUpperCase();
+            
+            if (currentUser.isAdmin) {
+                document.getElementById('adminBtn').style.display = 'inline-flex';
+            }
+        }
+
+        function logout() {
+            currentUser = null;
+            const authButtons = document.querySelector('.auth-buttons');
+            authButtons.querySelector('.btn-outline').style.display = 'inline-flex';
+            authButtons.querySelector('.btn-primary').style.display = 'inline-flex';
+            document.getElementById('userProfile').classList.remove('active');
+            document.getElementById('adminBtn').style.display = 'none';
+            showMainSite();
+        }
+
+        // ============= 모달 관련 =============
+        function openLoginModal() {
+            document.getElementById('loginModal').classList.add('active');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.remove('active');
+        }
+
+        function openPaymentModal(courseName, price) {
+            if (!currentUser) {
+                alert('먼저 로그인해주세요!');
+                openLoginModal();
+                return;
+            }
+
+            const settings = DB.get('settings');
+            currentCourse = { name: courseName, price: price };
+            
+            document.getElementById('courseName').textContent = courseName;
+            document.getElementById('coursePrice').textContent = `₩${price.toLocaleString()}`;
+            document.getElementById('totalPrice').textContent = `₩${price.toLocaleString()}`;
+            document.getElementById('displayAmount').textContent = `₩${price.toLocaleString()}`;
+            
+            document.getElementById('displayBankName').textContent = settings.bankName;
+            document.getElementById('displayAccountNumber').textContent = settings.accountNumber;
+            document.getElementById('displayAccountHolder').textContent = settings.accountHolder;
+            
+            document.getElementById('paymentModal').classList.add('active');
+            document.getElementById('successMessage').classList.remove('show');
+            document.getElementById('bankTransferInfo').classList.remove('show');
+            
+            document.querySelectorAll('.payment-method').forEach(el => el.classList.remove('selected'));
+            selectedPaymentMethod = null;
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').classList.remove('active');
+        }
+
+        function selectPaymentMethod(element, method) {
+            document.querySelectorAll('.payment-method').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedPaymentMethod = method;
+            
+            if (method === 'bank') {
+                document.getElementById('bankTransferInfo').classList.add('show');
+            }
+        }
+
+        function copyAccountNumber() {
+            const accountNumber = document.getElementById('displayAccountNumber').textContent;
+            navigator.clipboard.writeText(accountNumber).then(() => {
+                alert('계좌번호가 복사되었습니다: ' + accountNumber);
+            });
+        }
+
+        function processPayment() {
+            if (!selectedPaymentMethod) {
+                alert('결제 수단을 선택해주세요!');
+                return;
+            }
+
+            const depositorName = document.getElementById('depositorName').value;
+            if (!depositorName) {
+                alert('입금자명을 입력해주세요!');
+                return;
+            }
+
+            const payment = {
+                id: Date.now(),
+                date: new Date().toISOString(),
+                courseName: currentCourse.name,
+                amount: currentCourse.price,
+                method: '무통장입금',
+                depositorName: depositorName,
+                status: '입금대기',
+                user: currentUser.email
+            };
+
+            const payments = DB.get('payments');
+            payments.push(payment);
+            DB.set('payments', payments);
+
+            document.getElementById('successMessage').classList.add('show');
+            
+            setTimeout(() => {
+                closePaymentModal();
+                alert(`결제 요청이 완료되었습니다!\n\n입금 정보:\n${DB.get('settings').bankName} ${DB.get('settings').accountNumber}\n입금자명: ${depositorName}\n금액: ₩${currentCourse.price.toLocaleString()}\n\n입금 확인 후 강좌가 활성화됩니다.`);
+                updateAdminStats();
+                renderPayments();
+            }, 2000);
+        }
+
+        // ============= 강좌 렌더링 =============
+        function renderCourses() {
+            const courses = DB.get('courses');
+            const grid = document.getElementById('courseGrid');
+            grid.innerHTML = courses.map(course => `
+                <div class="course-card" onclick="openPaymentModal('${course.name}', ${course.price})">
+                    <div class="course-image">
+                        ${course.emoji}
+                        <span class="premium-badge">PREMIUM</span>
+                    </div>
+                    <div class="course-content">
+                        <h3>${course.name}</h3>
+                        <p>${course.desc}</p>
+                        <div class="course-footer">
+                            <div>
+                                <span class="price">₩${course.price.toLocaleString()}</span>
+                                ${course.originalPrice ? `<span class="price-original">₩${course.originalPrice.toLocaleString()}</span>` : ''}
+                            </div>
+                            <button class="btn btn-primary">구매하기</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ============= 광고 렌더링 =============
+        function renderAds() {
+            const ads = DB.get('ads').filter(ad => ad.status === 'active');
+            const section = document.getElementById('adSection');
+            
+            if (ads.length === 0) {
+                section.innerHTML = '';
+                return;
+            }
+
+            section.innerHTML = ads.map(ad => `
+                <div class="ad-container">
+                    <div class="ad-content">
+                        <div class="ad-text">
+                            <h3>${ad.title}</h3>
+                            <p>${ad.content.replace(/\n/g, '<br>')}</p>
+                            <button class="btn btn-primary" onclick="openLoginModal()">${ad.button}</button>
+                        </div>
+                        <div class="ad-visual">
+                            ${ad.emoji}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ============= 관리자 대시보드 =============
+        function showAdminDashboard() {
+            if (!currentUser || !currentUser.isAdmin) {
+                alert('관리자 권한이 필요합니다.');
+                return;
+            }
+            document.getElementById('mainSite').style.display = 'none';
+            document.getElementById('adminDashboard').classList.add('active');
+            updateAdminStats();
+            renderAdminCourses();
+            renderAdminAds();
+            renderPayments();
+            loadSettings();
+        }
+
+        function showMainSite() {
+            document.getElementById('mainSite').style.display = 'block';
+            document.getElementById('adminDashboard').classList.remove('active');
+        }
+
+        function switchAdminTab(tab) {
+            document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tab + 'Panel').classList.add('active');
+        }
+
+        function updateAdminStats() {
+            const courses = DB.get('courses');
+            const ads = DB.get('ads').filter(ad => ad.status === 'active');
+            const payments = DB.get('payments');
+            
+            const totalRevenue = payments.reduce((sum, p) => sum + p.amount, 0);
+            
+            document.getElementById('totalRevenue').textContent = `₩${totalRevenue.toLocaleString()}`;
+            document.getElementById('totalPayments').textContent = payments.length;
+            document.getElementById('totalCourses').textContent = courses.length;
+            document.getElementById('totalAds').textContent = ads.length;
+        }
+
+        function renderAdminCourses() {
+            const courses = DB.get('courses');
+            const tbody = document.getElementById('coursesTableBody');
+            tbody.innerHTML = courses.map(course => `
+                <tr>
+                    <td>${course.name}</td>
+                    <td>₩${course.price.toLocaleString()}</td>
+                    <td>${course.emoji}</td>
+                    <td>
+                        <button class="btn btn-outline action-btn" onclick="editCourse(${course.id})">수정</button>
+                        <button class="btn btn-primary action-btn" onclick="deleteCourse(${course.id})">삭제</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function renderAdminAds() {
+            const ads = DB.get('ads');
+            const tbody = document.getElementById('adsTableBody');
+            tbody.innerHTML = ads.map(ad => `
+                <tr>
+                    <td>${ad.title}</td>
+                    <td>${ad.content.substring(0, 50)}...</td>
+                    <td><span style="color: ${ad.status === 'active' ? 'var(--success)' : 'var(--text-dim)'}">${ad.status === 'active' ? '활성' : '비활성'}</span></td>
+                    <td>
+                        <button class="btn btn-outline action-btn" onclick="editAd(${ad.id})">수정</button>
+                        <button class="btn btn-primary action-btn" onclick="deleteAd(${ad.id})">삭제</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function renderPayments() {
+            const payments = DB.get('payments');
+            const tbody = document.getElementById('paymentsTableBody');
+            tbody.innerHTML = payments.reverse().map(payment => `
+                <tr>
+                    <td>${new Date(payment.date).toLocaleDateString('ko-KR')}</td>
+                    <td>${payment.courseName}</td>
+                    <td>₩${payment.amount.toLocaleString()}</td>
+                    <td>${payment.method}</td>
+                    <td>${payment.depositorName}</td>
+                    <td><span style="color: ${payment.status === '입금완료' ? 'var(--success)' : 'var(--gold)'}">${payment.status}</span></td>
+                </tr>
+            `).join('');
+        }
+
+        // ============= 강좌 관리 =============
+        function openCourseModal() {
+            editingCourseId = null;
+            document.getElementById('courseModalTitle').textContent = '새 강좌 추가';
+            document.getElementById('courseNameInput').value = '';
+            document.getElementById('courseDescInput').value = '';
+            document.getElementById('coursePriceInput').value = '';
+            document.getElementById('courseOriginalPriceInput').value = '';
+            document.getElementById('courseEmojiInput').value = '';
+            document.getElementById('courseModal').classList.add('active');
+        }
+
+        function closeCourseModal() {
+            document.getElementById('courseModal').classList.remove('active');
+        }
+
+        function editCourse(id) {
+            const courses = DB.get('courses');
+            const course = courses.find(c => c.id === id);
+            editingCourseId = id;
+            
+            document.getElementById('courseModalTitle').textContent = '강좌 수정';
+            document.getElementById('courseNameInput').value = course.name;
+            document.getElementById('courseDescInput').value = course.desc;
+            document.getElementById('coursePriceInput').value = course.price;
+            document.getElementById('courseOriginalPriceInput').value = course.originalPrice || '';
+            document.getElementById('courseEmojiInput').value = course.emoji;
+            document.getElementById('courseModal').classList.add('active');
+        }
+
+        function saveCourse(event) {
+            event.preventDefault();
+            const courses = DB.get('courses');
+            
+            const courseData = {
+                name: document.getElementById('courseNameInput').value,
+                desc: document.getElementById('courseDescInput').value,
+                price: parseInt(document.getElementById('coursePriceInput').value),
+                originalPrice: parseInt(document.getElementById('courseOriginalPriceInput').value) || null,
+                emoji: document.getElementById('courseEmojiInput').value || '📚'
+            };
+
+            if (editingCourseId) {
+                const index = courses.findIndex(c => c.id === editingCourseId);
+                courses[index] = { ...courses[index], ...courseData };
+            } else {
+                courseData.id = Date.now();
+                courses.push(courseData);
+            }
+
+            DB.set('courses', courses);
+            renderCourses();
+            renderAdminCourses();
+            updateAdminStats();
+            closeCourseModal();
+        }
+
+        function deleteCourse(id) {
+            if (!confirm('정말 삭제하시겠습니까?')) return;
+            const courses = DB.get('courses').filter(c => c.id !== id);
+            DB.set('courses', courses);
+            renderCourses();
+            renderAdminCourses();
+            updateAdminStats();
+        }
+
+        // ============= 광고 관리 =============
+        function openAdModal() {
+            editingAdId = null;
+            document.getElementById('adModalTitle').textContent = '새 광고 추가';
+            document.getElementById('adTitleInput').value = '';
+            document.getElementById('adContentInput').value = '';
+            document.getElementById('adButtonInput').value = '지금 확인하기';
+            document.getElementById('adEmojiInput').value = '';
+            document.getElementById('adStatusInput').value = 'active';
+            document.getElementById('adModal').classList.add('active');
+        }
+
+        function closeAdModal() {
+            document.getElementById('adModal').classList.remove('active');
+        }
+
+        function editAd(id) {
+            const ads = DB.get('ads');
+            const ad = ads.find(a => a.id === id);
+            editingAdId = id;
+            
+            document.getElementById('adModalTitle').textContent = '광고 수정';
+            document.getElementById('adTitleInput').value = ad.title;
+            document.getElementById('adContentInput').value = ad.content;
+            document.getElementById('adButtonInput').value = ad.button;
+            document.getElementById('adEmojiInput').value = ad.emoji;
+            document.getElementById('adStatusInput').value = ad.status;
+            document.getElementById('adModal').classList.add('active');
+        }
+
+        function saveAd(event) {
+            event.preventDefault();
+            const ads = DB.get('ads');
+            
+            const adData = {
+                title: document.getElementById('adTitleInput').value,
+                content: document.getElementById('adContentInput').value,
+                button: document.getElementById('adButtonInput').value,
+                emoji: document.getElementById('adEmojiInput').value || '📢',
+                status: document.getElementById('adStatusInput').value
+            };
+
+            if (editingAdId) {
+                const index = ads.findIndex(a => a.id === editingAdId);
+                ads[index] = { ...ads[index], ...adData };
+            } else {
+                adData.id = Date.now();
+                ads.push(adData);
+            }
+
+            DB.set('ads', ads);
+            renderAds();
+            renderAdminAds();
+            updateAdminStats();
+            closeAdModal();
+        }
+
+        function deleteAd(id) {
+            if (!confirm('정말 삭제하시겠습니까?')) return;
+            const ads = DB.get('ads').filter(a => a.id !== id);
+            DB.set('ads', ads);
+            renderAds();
+            renderAdminAds();
+            updateAdminStats();
+        }
+
+        // ============= 설정 =============
+        function loadSettings() {
+            const settings = DB.get('settings');
+            document.getElementById('bankName').value = settings.bankName;
+            document.getElementById('accountNumber').value = settings.accountNumber;
+            document.getElementById('accountHolder').value = settings.accountHolder;
+        }
+
+        function saveSettings() {
+            const settings = {
+                bankName: document.getElementById('bankName').value,
+                accountNumber: document.getElementById('accountNumber').value,
+                accountHolder: document.getElementById('accountHolder').value
+            };
+            DB.set('settings', settings);
+            alert('설정이 저장되었습니다!');
+        }
+
+        // ============= 모달 외부 클릭시 닫기 =============
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
